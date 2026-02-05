@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blake Restaurant Manager - Installer Exit Codes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #d97706;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d97706;
+        }
+
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #d97706;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #059669;
+        }
+
+        .error {
+            color: #dc2626;
+        }
+
+        .warning {
+            color: #d97706;
+        }
+
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #d97706;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Blake Restaurant Manager</h1>
+        <p class="subtitle">Installer Exit Codes Documentation</p>
+
+        <h2>Overview</h2>
+        <p>
+            This document describes the exit codes returned by the Blake Restaurant Manager installer (NSIS-based).
+            These codes help system administrators and IT professionals diagnose installation issues.
+        </p>
+
+        <h2>Standard Exit Codes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Exit Code</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Action Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="code success">0</span></td>
+                    <td><strong>Success</strong></td>
+                    <td>Installation completed successfully</td>
+                    <td>None - Application installed correctly</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">1</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Generic installation error</td>
+                    <td>Check installer log for details</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">2</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>User canceled installation</td>
+                    <td>Retry installation if needed</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">3</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Fatal error during installation</td>
+                    <td>Check system requirements and permissions</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">4</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Insufficient disk space</td>
+                    <td>Free up at least 500 MB of disk space</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">5</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Access denied - insufficient permissions</td>
+                    <td>Run installer with appropriate user permissions</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">6</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Another instance of installer is running</td>
+                    <td>Close other installer instances and retry</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Updater Exit Codes</h2>
+        <p>Blake uses a custom PowerShell-based updater. These are the exit codes from the update process:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Exit Code</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Action Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="code success">0</span></td>
+                    <td><strong>Success</strong></td>
+                    <td>Update completed successfully</td>
+                    <td>None - Application updated correctly</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">100</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Update download failed</td>
+                    <td>Check internet connection and retry</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">101</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Update extraction failed</td>
+                    <td>Check disk space and antivirus settings</td>
+                </tr>
+                <tr>
+                    <td><span class="code error">102</span></td>
+                    <td><strong>Error</strong></td>
+                    <td>Update installation failed</td>
+                    <td>Retry or download full installer</td>
+                </tr>
+                <tr>
+                    <td><span class="code warning">200</span></td>
+                    <td><strong>Warning</strong></td>
+                    <td>Update skipped - user declined</td>
+                    <td>None - User chose not to update</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Silent Installation</h2>
+        <p>Blake supports silent installation with the following parameter:</p>
+        <pre
+            style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin: 10px 0;">Blake-Restaurant-Manager-Setup-1.1.59.exe /S</pre>
+
+        <div class="note">
+            <strong>Note:</strong> In silent mode, the installer will use default settings and install to the standard
+            location without user interaction.
+        </div>
+
+        <h2>Log Files</h2>
+        <p>Installation logs are stored in:</p>
+        <ul style="margin: 10px 0 10px 30px;">
+            <li><strong>Installer:</strong> <code>%TEMP%\Blake-Restaurant-Manager-Install.log</code></li>
+            <li><strong>Application:</strong> <code>%APPDATA%\Blake Restaurant Manager\logs\</code></li>
+            <li><strong>Updater:</strong> <code>%TEMP%\BlakeUpdater.log</code></li>
+        </ul>
+
+        <h2>System Requirements</h2>
+        <ul style="margin: 10px 0 10px 30px;">
+            <li>Windows 10 (64-bit) or later</li>
+            <li>500 MB free disk space</li>
+            <li>Active internet connection</li>
+            <li>User-level permissions (admin not required)</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+        <h3>Installation Fails with Exit Code 5</h3>
+        <p>This usually indicates permission issues. Ensure:</p>
+        <ul style="margin: 10px 0 10px 30px;">
+            <li>You have write permissions to <code>%LOCALAPPDATA%</code></li>
+            <li>Antivirus is not blocking the installer</li>
+            <li>Windows Defender SmartScreen is configured correctly</li>
+        </ul>
+
+        <h3>Update Fails with Exit Code 100</h3>
+        <p>Download issues can be resolved by:</p>
+        <ul style="margin: 10px 0 10px 30px;">
+            <li>Checking internet connectivity</li>
+            <li>Verifying firewall/proxy settings</li>
+            <li>Manually downloading latest version from GitHub releases</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>Blake Restaurant Manager v1.1.59</strong></p>
+            <p>© 2025 Martben SAS | <a href="https://www.martben.com">www.martben.com</a></p>
+            <p>Support: <a href="mailto:juanbenavides@martben.com">juanbenavides@martben.com</a></p>
+            <p>Documentation updated: February 2026</p>
+        </div>
+    </div>
+</body>
+
+</html>
